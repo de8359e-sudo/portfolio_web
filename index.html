@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이다은 | 기획자 포트폴리오</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="custom-cursor"></div>
+
+    <div class="container">
+        <header>
+            <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="테마 변경">
+                <img id="theme-icon" src="images/light.png" alt="테마 아이콘">
+            </button>
+
+            <span class="badge">Portfolio</span>
+            <h1>충실한 과정에서 결과를 내는 기획자, <span style="color: #1865A4;">이다은</span> 입니다.</h1>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'web-shop')">웹 상점</button>
+            <button class="tab-button" onclick="openTab(event, 'community')">커뮤니티 서비스</button>
+            <button class="tab-button" onclick="openTab(event, 'brand-site')">브랜드 사이트</button>
+        </nav>
+
+        <div id="web-shop" class="tab-content active">
+            <div class="project-header">
+                <h3 class="project-title">웹 상점 구축 및 개선</h3>
+                <p class="project-summary">인게임 재화 및 아이템의 웹 환경 결제 전환율 확대를 위한 이커머스 플랫폼 (인앱 결제 수수료 최소화를 통한 수익성 개선 목표)</p>
+                <div class="project-meta"><strong>프로젝트 기간:</strong> 2025년 1월 ~ 2026년 1월</div>
+                <div class="project-meta"><strong>서머너즈 워 웹 상점:</strong> <a href="https://summonerswar-shop.com2us.com/" target="_blank">https://summonerswar-shop.com2us.com</a></div>
+                <div class="project-meta"><strong>컴투스프로야구V 웹 상점:</strong> <a href="https://cpbv-shop.com2us.com" target="_blank">https://cpbv-shop.com2us.com</a></div>
+            </div>
+
+            <div class="sub-title">1. Backoffice 시스템 구축</div>
+
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider-slide">
+                        <img src="images/webshop/main.png" alt="웹상점 메인 화면">
+                    </div>                    
+                    <div class="slider-slide">
+                        <img src="images/webshop/BF.png" alt="웹상점 백오피스 구축 전후 시스템">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="images/webshop/FLOW.png" alt="웹 상점 서비스 백오피스 흐름도">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="images/webshop/Frame 26.png" alt="백오피스 기능 명세서">
+                    </div>
+                </div>
+                
+                <div class="slider-caption">웹상점 메인 화면</div>
+                
+                <div class="slider-pagination"></div>
+            </div>
+            <div class="section-block">
+                <h4>Problem</h4>
+                <ul>
+                    <li>상점 런칭마다 반복되는 <strong>하드코딩</strong> 개발로 인한 리소스 낭비 (건당 <strong>4주</strong> 소요)</li>
+                    <li>통합 관리 도구 부재로 운영 <strong>효율성 저하</strong> 및 <strong>휴먼 에러</strong> 리스크 존재</li>
+                    <li>신규 기능 업데이트 시 기존 상점들과의 <strong>마이그레이션 부담</strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Goal & KPI</h4>
+                <ul>
+                    <li>통합 어드민(Backoffice) 구축을 통한 게임별 웹 상점 <strong>개발·운영 생산성 극대화</strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Role</h4>
+                <ul>
+                    <li>게임별 상이한 상점 정책 통합 및 표준화 가이드 수립</li>
+                    <li>확장성을 고려한 백오피스 기능 명세 및 정보 구조(IA) 설계</li>
+                    <li>개발 / 디자인 / 사업팀 간 우선순위 조율 및 프로젝트 리딩</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Issue & Point</h4>
+                <ul>
+                    <li>다양한 기능에 대한 신규 사용자의 진입 장벽 → <strong>행동 흐름 중심의 UX 설계</strong>로 가이드 없이도 조작 가능한 인터페이스 구현</li>
+                    <li>프론트 기능과 백오피스 설정 간의 복잡한 상관관계 → 보너스 및 프로모션을<strong> 모듈화</strong>하여 상품 등록과 별개로 매칭 가능한 구조 설계</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Result</h4>
+                <ul>
+                    <li>상점 세팅 공수 <strong><span class="count-up" data-target="80">0</span>% 이상</strong> 절감 (기존 4주 → 구축 후 3일 이내)</li>
+                    <li>상점 설정 항목 <strong><span class="count-up" data-target="100">0</span>% 시스템화</strong>로 개발 지원 없이 운영팀 직접 대응 가능</li>
+                    <li>단일 백오피스로 N개의 프로젝트 <strong>동시 대응</strong> 및 신규 기능 <strong>일괄 배포</strong> 환경 구축</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Retrospect</h4>
+                <ul>
+                    <li>빅뱅 방식(한 번에 전체 오픈)의 리스크를 경험하며, 복잡도가 높은 백오피스일수록 핵심 기능 우선 배포 및 반복적 개선이 안정성과 QA 품질 측면에서 훨씬 유리함을 학습</li>
+                    <li>차기 프로젝트에서는 MVP 선정 및 점진적 기능 고도화를 통해 리스크를 관리하는 프로세스를 정립</li>
+                </ul>
+            </div>
+
+            <hr class="sub-project-divider">
+
+            <div class="sub-title">2. 사내 최초 쿠폰, 포인트 시스템 구축</div>
+            <p class="project-meta-caption">※ Back office 쿠폰 조회 화면 및 Front office 마이페이지 구현 포함</p>
+            
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider-slide">
+                        <img src="images/webshop/back_coupon.png" alt="백오피스 쿠폰 상세 예시">
+                    </div>                    
+                    <div class="slider-slide">
+                        <img src="images/webshop/my_couponpoint.png" alt="웹상점 마이페이지 쿠폰/포인트 화면">
+                    </div>                    
+                </div>
+                
+                <div class="slider-caption">백오피스 쿠폰 상세 예시</div>
+                
+                <div class="slider-pagination"></div>
+            </div>            
+            
+            <div class="section-block">
+                <h4>Problem</h4>
+                <ul>
+                    <li><strong>결제 유도 장치 부재</strong>로 인한 매출 기회 손실</li>
+                    <li>프로모션 시마다 수동 지급 처리에 따른 <strong>운영 리소스 과다</strong> 및 <strong>휴먼 에러 위험</strong></li>
+                    <li>프로모션에 필요한 쿠폰, 포인트 기능 니즈 증가</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Goal & KPI</h4>
+                <ul>
+                    <li>쿠폰/포인트 시스템 구축을 통한 웹 상점 <strong>결제 활성화</strong> 및 유저 <strong>리텐션 강화</strong></li>
+                    <li><strong>개발 개입 없는</strong> 자동 지급 프로세스 구축(Backoffice)</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Role</h4>
+                <ul>
+                    <li>쿠폰/포인트 라이프사이클(발급-사용-소멸) 및 환불 시 복구 정책 수립</li>
+                    <li>사용자 익숙함을 고려한 보편적 쿠폰 UI 채택 및 게임 내 재화와의 가치 충돌 방지 로직 설계</li>
+                    <li>통화별 소수점 처리 및 글로벌 결제 수단별 포인트 적립율 차등 적용 정책 수립</li>
+                    <li>개발/디자인/사업팀 간 우선순위 조율 및 마일스톤 관리</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Result</h4>
+                <ul>
+                    <li>프로모션 효율 개선으로 전체 매출 대비 웹 상점 매출 비중 <Strong><span class="count-up" data-target="5">0</span>% 이상 증가</Strong></li>
+                    <li>자동 지급 시스템 도입으로 이벤트 준비 기간 <Strong><span class="count-up" data-target="70">0</span>% 단축</Strong></li>
+                    <li>컴투스 웹 상점 글로벌 서비스 표준 쿠폰/포인트 <Strong>정책 수립</Strong> 및 <Strong>시스템 적용</Strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Retrospect</h4>
+                <ul>
+                    <li>프로젝트 중반 쿠폰/포인트 기능 추가 요청 시, 기존 데이터 구조를 유지하면서도 확장 가능한 설계를 통해 개발 공수를 최소화함</li>
+                    <li>디자인/개발 파트와 빠른 의사소통을 통해 병목 지점을 즉각 해결하며, 마일스톤에 큰 영향 없이 핵심 기능을 성공적으로 런칭함</li>
+                </ul>
+            </div>
+
+            <hr class="sub-project-divider">
+
+            <div class="sub-title">3. 프론트 결제 플로우 개선</div>
+            <p class="project-meta-caption">※ Front office 메인 / 상품 상세 / 주문서 화면 최적화</p>
+
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider-slide">
+                        <img src="images/webshop/purchase_front.png" alt="웹 상점 메인/상품 상세/주문서 화면">
+                    </div>                    
+                    <div class="slider-slide">
+                        <img src="images/webshop/purchase process.png" alt="결제 프로세스 개선 flow">
+                    </div>                    
+                </div>
+              
+                <div class="slider-caption">웹 상점 메인/상품 상세/주문서 화면</div>
+                <div class="slider-pagination"></div>
+            </div> 
+
+            <div class="section-block">
+                <h4>Problem</h4>
+                <ul>
+                    <li>상품 상세 정보 및 구성품 확인 불가로 인한 <Strong>구매 결정 이탈</Strong> 발생</li>
+                    <li><Strong>수량 선택 기능 부재</Strong>로 인한 결제 피로도 증가 및 구매 여정 내 이탈 유발</li>
+                    <li>쿠폰, 포인트 기능 적용 시 최종 결제 금액을 확인할 <Strong>주문서 페이지의 부재</Strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Goal & KPI</h4>
+                <ul>
+                    <li>구매 퍼널 최적화 및 정보 전달 강화를 통한 <Strong>결제 전환율 향상</Strong></li>
+                    <li>수량 선택 및 주문 확인 페이지 신설로 결제 여정의 <Strong>사용자 편의성 극대화</Strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Role</h4>
+                <ul>
+                    <li>타 게임사 웹 상점 및 일반 쇼핑몰 조사를 통해 유저에게 익숙한 혜택 제공 방법 및 UI/UX 탐색</li>
+                    <li>환불 정책, 구매 조건 등 법적 필수 고지 사항 및 중요 결제 정보 최적화 배치</li>
+                    <li>사용자 이탈 최소화를 위한 결제 플로우 설계 및 UI 기획</li>
+                    <li>개발/디자인/사업팀 간 우선순위 조율 및 마일스톤 관리</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Issue & Point</h4>
+                <ul>
+                    <li>‘2차 재화 상품’이라는 생소한 상품 개념에 대한 <strong>명확한 인지 UI 제공</strong></li>
+                    <li>상품 상세(탐색) → 주문서(확인) → 결제(완료)로 이어지는 <strong>단계별 정보 위계 최적화</strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Result</h4>
+                <ul>
+                    <li>주문서 페이지 신설 및 여정 최적화로 결제 진입 후 <strong>이탈률 <span class="count-up" data-target="13">0</span>% 감소</strong></li>
+                    <li>수량 선택 기능 구축으로 <strong>1인당 평균 결제 금액 향상</strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Retrospect</h4>
+                <ul>
+                    <li>결제 플로우는 단순히 단계를 줄이는 것보다, 사용자에게 '확신'을 주는 정보(할인액, 상세 구성)를 적재적소에 배치하는 것이 전환율에 더 직접적인 영향을 미침을 데이터로 확인함</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="community" class="tab-content">
+            <div class="project-header">
+                <h3 class="project-title">커뮤니티 서비스 플랫폼 구축</h3>
+                <p class="project-summary">외부 커뮤니티 의존도 최소화 및 브랜드 사이트 활성화를 위한 자체 커뮤니티 인프라 개발</p>
+                <div class="project-meta"><strong>프로젝트 기간:</strong> 2025년 12월 ~ 2026년 8월 12일</div>
+                <div class="project-meta"><strong>참고 링크:</strong> <a href="https://zeus.com2us.com/news/notice" target="_blank">https://zeus.com2us.com/news/notice</a></div>
+                <div class="project-meta-alert">※ 유저 활동 커뮤니티 게시판 순차 오픈 예정, 기능 개발 완료</div>
+            </div>
+
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider-slide">
+                        <img src="images/community/zeus_community.png" alt="커뮤니티 서비스 플랫폼">
+                    </div>                    
+                    <div class="slider-slide">
+                        <img src="images/community/community_list.png" alt="아코디언형 게시판/리스트형 게시판/섬네일형 게시판">
+                    </div>   
+                    <div class="slider-slide">
+                        <img src="images/community/community_my.png" alt="마이페이지-나의 글/마이페이지-계정관리/알랏">
+                    </div> 
+                    <div class="slider-slide">
+                        <img src="images/community/back_menu.png" alt="백오피스 메뉴 구조">
+                    </div> 
+                    <div class="slider-slide">
+                        <img src="images/community/back_detail.png" alt="백오피스 기능 명세서">
+                    </div>                                                                              
+                </div>
+                
+                <div class="slider-caption">커뮤니티 서비스 플랫폼</div>
+                <div class="slider-pagination"></div>
+            </div> 
+
+            <div class="section-block">
+                <h4>Problem</h4>
+                <ul>
+                    <li>게임 런칭 이후 브랜드 사이트 내 <strong>유저 간 소통 창구 부재</strong>로 인한 방문율 지속 감소</li>
+                    <li>외부 툴 의존으로 인한 <strong>UI 제약</strong> 및 도메인 파편화로 <strong>유저 데이터 트래킹 한계</strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Goal</h4>
+                <ul>
+                    <li>공지 및 유저 커뮤니티 통합 제공을 통한 브랜드 사이트 내 <strong>유저 리텐션 및 인바운드 트래픽 제고</strong></li>
+                    <li>관리 부서에서 다방면으로 활용 가능한 <strong>확대 기능 및 UI 제공</strong></li>
+                    <li>추후 신규 브랜드 사이트에서 사용 가능하도록 커뮤니티 <strong>템플릿 확장성 고려</strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Role</h4>
+                <ul>
+                    <li>타사 레퍼런스 및 벤치마킹 기반의 커뮤니티 서비스 정책 수립 및 Front/Back-office 상세 화면 설계</li>
+                    <li>PL로서 유관 부서 요구사항 수집, 핵심 기능 정의 및 스펙 아웃 의사결정 주도</li>
+                    <li>한정된 프로젝트 리소스를 고려한 기능별 우선순위 조정 및 단계적 배포 전략 수립</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Issue & Point</h4>
+                <ul>
+                    <li><strong>[Front - 운영 효율성]</strong> 4대 핵심 템플릿 형태(리스트/섬네일/아코디언/FAQ) 제공으로 운영 부서 <strong>니즈 충족 및 기획·개발 공수 최소화</strong></li>
+                    <li><strong>[Front - 이탈 방지]</strong> 게임 미연동 계정 제한 등 예외 케이스별 <strong>UX 라이팅</strong> 및 <strong>얼럿 시스템</strong> 최적화를 통한 <strong>유저 이탈 방지</strong></li>
+                    <li><strong>[Back - 권한 및 제어]</strong> 효율적인 콘텐츠 관리를 위한 <strong>'설정 기능(템플릿 제어)'</strong>과 <strong>'운영 기능(게시글/신고/회원 관리)'</strong>의 <strong>구조적 분리</strong></li>
+                    <li><strong>[Back - 모듈 구조]</strong> 게시글 상세, 회원 상세 페이지는 모든 메뉴에서 진입 가능한 구조 → <strong>개발 작업 최소화, 사용자 이동 동선 최소화</strong></li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Result (가동 전 기대효과)</h4>
+                <ul>
+                    <li>자체 소통 창구 활성화를 통해 런칭 초기 부스팅 유저의 브랜드 사이트 리텐션 <strong><span class="count-up" data-target="60">0</span>% 방어 타겟</strong></li>
+                    <li>표준 템플릿 활용 기반 확립으로 차기 브랜드 사이트 구축 시 커뮤니티 개발 공수 <strong>6개월 단축</strong> 및 외부 솔루션 구독 비용 <strong>100% 절감</strong> 예상</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Retrospect</h4>
+                <ul>
+                    <li>프로젝트 초기 단계에서 백오피스 상세 기능 명세서를 선제적으로 정의 및 싱크하여, 유관 부서 간 잠재적 병목 구간을 조기 발견하고 스펙 아웃 조율 시간을 대폭 단축함</li>
+                    <li>플랫폼 단위 기획 시 화면 설계와 확장 정책을 동시에 설계하는 법을 체득함</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="brand-site" class="tab-content">
+            <div class="project-header">
+                <h3 class="project-title">브랜드 사이트 빌드 및 마케팅 브랜딩</h3>
+                <p class="project-summary">신규 론칭 라인업의 잠재 유저 확보 및 사전 마케팅을 위한 브랜딩 구축</p>
+                <div class="project-meta"><strong>주요 목표:</strong> 신규 게임의 기대감 조성을 위한 브랜딩 / 정보 전달 및 사전예약 이벤트 유도</div>
+            </div>
+
+            <div class="sub-title">1. 스타시드: 아스니아 트리거</div>
+            <div class="project-meta"><strong>프로젝트 기간:</strong> 2023년 10월 ~ 2024년 3월</div>
+            <div class="project-meta"><strong>공식 사이트:</strong> <a href="https://starseed.com2us.com/ko?r=p01" target="_blank">https://starseed.com2us.com</a></div>
+            <div class="project-meta-alert">※ 현재는 서비스 종료, 대체화면 노출중</div>
+
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider-slide">
+                        <img src="images/branding/1.jpg" alt="메인">
+                    </div>                    
+                    <div class="slider-slide">
+                        <img src="images/branding/2.jpg" alt="사전예약">
+                    </div>      
+                    <div class="slider-slide">
+                        <img src="images/branding/3.jpg" alt="이벤트">
+                    </div>                       
+                     <div class="slider-slide">
+                        <img src="images/branding/4.jpg" alt="세계관">
+                    </div>                      
+                    <div class="slider-slide">
+                        <img src="images/branding/5.jpg" alt="캐릭터">
+                    </div>   
+                    <div class="slider-slide">
+                        <img src="images/branding/6.jpg" alt="캐릭터 상세">
+                    </div>   
+                    <div class="slider-slide">
+                        <img src="images/branding/7.jpg" alt="SNS">
+                    </div>   
+                </div>
+              
+                <div class="slider-caption">메인</div>
+                <div class="slider-pagination"></div>
+            </div>             
+
+            <div class="section-block" style="margin-top:15px;">
+                <h4>Goal</h4>
+                <ul>
+                    <li>브랜드 사이트 내 유입 유저의 사전예약 전환율 극대화</li>
+                    <li>콘텐츠 탐색 깊이 심화를 통한 인게임 세계관 인게이지먼트 유도 강화</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Role</h4>
+                <ul>
+                    <li>서브컬처 유저의 강력한 '팬덤 성향'을 공략하기 위해, 캐릭터 및 세계관을 반영한 전용 콘셉트·레이아웃 설계로 서비스의 시각적 매력 극대화</li>
+                    <li>외부 및 사내 유관 부서 요구사항 조율 기반의 웹 서비스 정책 수립 및 상세 기능·화면 설계</li>
+                    <li>디자인·개발 파트와의 긴밀한 커뮤니케이션 및 프로젝트 리딩</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Issue & Point</h4>
+                <ul>
+                    <li>캐릭터 일러스트 중심의 풀 스크린 배치로 시각적 몰입감 및 유저 흥미 유발</li>
+                    <li>이탈 없는 내비게이션을 위한 풀 페이지 스크롤 기반의 원페이지 인터랙션 구현</li>
+                    <li>게임 속 캐릭터가 말을 거는 듯한 스크롤 기반의 토스트 팝업 시스템 기획 (세계관 동기화)</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Result</h4>
+                <ul>
+                    <li>사전예약 기간 내 방문자 대비 예약 전환율 평균 <strong><span class="count-up" data-target="70">0</span>% 이상</strong> 달성</li>
+                    <li>론칭 후 1개월간 방문자의 <strong><span class="count-up" data-target="35">0</span>%가</strong> 이탈 없이 마지막 페이지까지 탐색</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Retrospect</h4>
+                <ul>
+                    <li>타겟 유저와 게임 콘셉트를 명확히 해석한 기획이 유저 행동에 미치는 긍정적 영향 확인</li>
+                </ul>
+            </div>
+
+            <hr class="sub-project-divider">
+
+            <div class="sub-title">2. 프로야구라이징</div>
+            <div class="project-meta"><strong>프로젝트 기간:</strong> 2024년 10월 ~ 2025년 3월</div>
+            <div class="project-meta"><strong>공식 사이트:</strong> <a href="https://prorising.com2us.com/main" target="_blank">https://prorising.com2us.com</a></div>
+
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider-slide">
+                        <img src="images/branding/PRO.png" alt="브랜드 사이트">
+                    </div>                      
+                </div>
+              
+                <div class="slider-caption">브랜드 사이트</div>
+                <div class="slider-pagination"></div>
+            </div> 
+
+            <div class="section-block" style="margin-top:15px;">
+                <h4>Goal & KPI</h4>
+                <ul>
+                    <li>글로벌(일본) 타겟 유저의 매끄러운 유입 및 사전예약 전환율 최적화</li>
+                    <li>지속적인 정보 업데이트 확인이 용이한 구조 설계를 통한 재방문율 제고</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Role</h4>
+                <ul>
+                    <li>일본 현지 유저의 웹 소비 성향 분석을 통해 단일 화면 내 높은 정보 밀도를 선호하는 UI 문화적 특성 파악</li>
+                    <li>일본 동종 스포츠 장르 브랜드 사이트 분석으로 공지사항, 이벤트 등 정보성 콘텐츠의 메인 전면 배치로 탐색 뎁스 최소화 전략 수립</li>
+                    <li>일본 시장 및 타겟 유저 특성을 반영한 웹 서비스 정책 수립, 상세 기능 정의 및 스토리보드 작성</li>
+                    <li>디자인·개발 파트와의 긴밀한 커뮤니케이션 및 프로젝트 리딩</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Issue & Point</h4>
+                <ul>
+                    <li>리소스 한계를 극복하기 위해 빌드 내 UI 요소(물감, 찢김 효과 등)를 추출·변형하여 야구 장르 특유의 역동적인 비주얼 정체성 구현</li>
+                    <li>가로·세로 영상 동시 노출 요구사항 대응을 위해 오버랩 레이아웃 및 스크롤 애니메이션 설계로 유저의 시각적 피로도 감소 및 탐색 몰입도 확보</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Result</h4>
+                <ul>
+                    <li>사전예약 기간 내 방문자 대비 사전예약 전환율 평균 <strong><span class="count-up" data-target="65">0</span>% 이상</strong> 기록</li>
+                    <li>론칭 이후 한 달간 방문자 대비 재방문율 <strong><span class="count-up" data-target="10">0</span>% 이상</strong> 유지</li>
+                </ul>
+            </div>
+            <div class="section-block">
+                <h4>Retrospect</h4>
+                <ul>
+                    <li>프로젝트 중반, 사업부의 갑작스러운 요구사항 및 글로벌 시장 변동성 속에서도 유연하고 타당성 있는 기획 조율을 통해 성공적으로 론칭을 완수한 경험 축적</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
