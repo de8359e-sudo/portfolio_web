@@ -122,6 +122,10 @@ header p {
     text-align: center;
     border-bottom: 3px solid transparent;
     margin-bottom: -2px;
+
+    /* 💥 모바일에서 단어 단위로 예쁘게 줄바꿈되도록 하는 핵심 코드 */
+    word-break: keep-all;       /* 한글 단어가 중간에 찢어지는 것을 방지 */
+    display: inline-block;      /* 내부 단락이 블록 단위로 묶여 떨어지게 유도 */
 }
 
 .tab-button:hover {
