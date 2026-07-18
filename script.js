@@ -17,7 +17,6 @@ function openTab(evt, tabName) {
     targetTab.style.display = "block";
     setTimeout(() => {
         targetTab.classList.add("fade-in");
-        // 💥 인터랙션 2: 탭이 펼쳐질 때 본문 내 성과 지표를 실시간 가동
         triggerCountUp(targetTab);
     }, 20);
     evt.currentTarget.classList.add("active");
@@ -25,7 +24,7 @@ function openTab(evt, tabName) {
 }
 
 // ==========================================================================
-// 🌓 2. 인터랙션: 다크/라이트 테마 원자적 전환 로직 (하늘로 솟구치는 슬라이드 연동)
+// 🌓 2. 인터랙션: 다크/라이트 테마 원자적 전환 로직
 // ==========================================================================
 function toggleTheme() {
     const body = document.body;
@@ -34,10 +33,8 @@ function toggleTheme() {
 
     if (!themeIcon) return;
 
-    // [1단계] 기존 아이콘을 위로 쏘아 올려 숨깁니다 (Slide Out)
     themeIcon.classList.add("slide-out");
 
-    // [2단계] 아이콘이 하늘 위로 완전히 사라진 시점(0.2초 뒤)에 테마를 바꾸고 새 아이콘을 바닥에 대기시킵니다
     setTimeout(() => {
         if (currentTheme === "dark") {
             body.removeAttribute("data-theme");
@@ -49,16 +46,14 @@ function toggleTheme() {
             themeIcon.src = "images/dark.png";
         }
 
-        // 새 이미지가 바닥(아래쪽)에서 올라올 준비를 하도록 세팅합니다 (Slide Prepare)
         themeIcon.classList.remove("slide-out");
         themeIcon.classList.add("slide-prepare");
 
-        // [3단계] 아주 찰나의 순간(0.02초) 뒤에 바닥에 숨겨둔 새 아이콘을 위로 스무스하게 올립니다
         setTimeout(() => {
             themeIcon.classList.remove("slide-prepare");
         }, 20);
 
-    }, 200); // 0.2초 대기
+    }, 200);
 }
 
 // ==========================================================================
@@ -72,7 +67,7 @@ function triggerCountUp(scope) {
         
         counter.innerText = "0"; 
         let count = 0;
-        const speed = target / 25; // 차오르는 프레임 속도 분할률
+        const speed = target / 25;
 
         const updateCount = () => {
             count += speed;
@@ -88,10 +83,9 @@ function triggerCountUp(scope) {
 }
 
 // ==========================================================================
-// 🚀 전체 생태계 DOM 빌드 시동 제어 (최초 로드 시 아이콘 매칭 반영)
+// 🚀 전체 생태계 DOM 빌드 시동 제어
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
-    // 저장된 테마를 불러와 body 태그 및 아이콘 src에 적용합니다.
     const savedTheme = localStorage.getItem("theme") || "light";
     const themeIcon = document.getElementById("theme-icon");
 
@@ -116,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================================================
-// 🎯 4. 인터랙션: 기획자 시선 트래킹 (마우스 커서 스토킹 링)
+// 🎯 4. 인터랙션: 기획자 시선 트래킹
 // ==========================================================================
 function initCustomCursor() {
     const cursor = document.querySelector('.custom-cursor');
@@ -127,8 +121,7 @@ function initCustomCursor() {
         cursor.style.top = e.clientY + 'px';
     });
 
-    // clickable 인터랙티브 요소 접근 시 은은하게 반응하도록 피드백 수혈
-    const clickables = document.querySelectorAll('a, button, .slider-dot, .slider-slide img');
+    const clickables = document.querySelectorAll('a, button, .slider-dot, .slider-slide img, .ai-quick-replies button');
     clickables.forEach(elem => {
         elem.addEventListener('mouseenter', () => {
             cursor.style.transform = 'translate(-50%, -50%) scale(1.6)';
@@ -142,7 +135,7 @@ function initCustomCursor() {
 }
 
 // ==========================================================================
-// 🖼️ 5. 이미지 슬라이더 코어 프로세스 (기존 로직 100% 완전 보존)
+// 🖼️ 5. 이미지 슬라이더 코어 프로세스
 // ==========================================================================
 function initSliders() {
     const containers = document.querySelectorAll('.slider-container');
@@ -275,4 +268,73 @@ function initSliders() {
         
         function resetAutoFlip() { clearInterval(autoFlipTimer); }
     });
+}
+
+// ==========================================================================
+// 🤖 6. AI 챗봇 컴포넌트 핵심 비즈니스 로직
+// ==========================================================================
+function toggleChatWindow() {
+    const chatWindow = document.getElementById('aiChatWindow');
+    chatWindow.classList.toggle('active');
+}
+
+function sendQuickReply(text) {
+    document.getElementById('aiInput').value = text;
+    sendChatMessage();
+}
+
+async function sendChatMessage() {
+    const inputEl = document.getElementById('aiInput');
+    const chatBody = document.getElementById('chatBody');
+    const userText = inputEl.value.trim();
+    
+    if (!userText) return;
+
+    // 유저 버블 생성
+    const userBubble = document.createElement('div');
+    userBubble.className = 'chat-bubble user';
+    userBubble.innerText = userText;
+    chatBody.appendChild(userBubble);
+    inputEl.value = '';
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // AI 로딩 스피너 버블 생성
+    const aiBubble = document.createElement('div');
+    aiBubble.className = 'chat-bubble ai';
+    aiBubble.innerText = '생각 중...';
+    chatBody.appendChild(aiBubble);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // 보안 우회 및 순수 프론트엔드 구동을 위한 무료 Gemini API 엔드포인트 직접 호출
+    // ⚠️ 실서비스 배포 시에는 API 키 탈취 위험이 있으므로 백엔드 이전을 권장합니다.
+    const GEMINI_API_KEY = "AQ.Ab8RN6I9-rcoNQwsIMXoY_DwFsuVNMnpVEzHJZSG7aoMsxDmrw"; 
+    const targetModel = 'gemini-3-flash-preview';
+
+    // 포트폴리오 데이터를 기반으로 하는 AI 역할 정의 프롬프트 수혈
+    const systemInstruction = `당신은 서비스 기획자 '이다은'의 포트폴리오 안내 비서입니다. 제공된 데이터에 기반해 친절하고 전문적으로 기획자 이다은을 대변하세요.
+    [주요 이력 정보]
+    1. 웹 상점 구축: 이커머스 백오피스 구축(상점 세팅 공수 80% 이상 절감), 사내 최초 쿠폰/포인트 시스템 설계, 프론트 결제 플로우 여정 개선으로 이탈률 13% 감소.
+    2. 커뮤니티 플랫폼: 인바운드 트래픽 제고를 위한 4대 핵심 템플릿(리스트/섬네일 등) 설계 및 배포 리소스 단축 기틀 마련.
+    3. 브랜드 사이트: '스타시드' 사전예약 전환율 70% 달성, 일본 타겟 '프로야구라이징' 최적화 및 재방문율 10% 방어.
+    답변은 3줄 이내로 핵심 위주로 문맥에 맞게 두괄식으로 간결하게 작성하세요.`;
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: `${systemInstruction}\n\n사용자 질문: ${userText}` }] }]
+            })
+        });
+
+        const data = await response.json();
+        const aiResponseText = data.candidates[0].content.parts[0].text;
+        aiBubble.innerText = aiResponseText;
+    } catch (error) {
+    // 이 부분을 원하는 문구로 변경하세요
+    aiBubble.innerText = '⚠️ 현재 AI 호출량이 많아 잠시 서비스가 제한되었습니다. 잠시 후 다시 시도해 주세요!';
+    console.error(error);
+    } finally {
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
 }

@@ -442,6 +442,31 @@
         </div>
     </div>
 
+    <!-- ✨ AI 요약 챗봇 위젯 추가 -->
+    <div class="ai-widget" id="aiWidget">
+        <button class="ai-toggle-btn img-button" onclick="toggleChatWindow()" aria-label="AI 챗봇 열기">
+            <img src="images/ri_ai.png" alt="AI 챗봇 아이콘">
+        </button>
+        <div class="ai-chat-window" id="aiChatWindow">
+            <div class="ai-chat-header">
+                <span>포트폴리오 내용을 질문해보세요!</span>
+                <button onclick="toggleChatWindow()">✕</button>
+            </div>
+            <div class="ai-chat-body" id="chatBody">
+                <div class="chat-bubble ai">안녕하세요! 기획자 이다은의 포트폴리오 요약 AI입니다. 어떤 프로젝트가 궁금하신가요? 아래 추천 버튼을 누르거나 직접 물어보세요!</div>
+            </div>
+            <div class="ai-quick-replies">
+                <button onclick="sendQuickReply('웹 상점 프로젝트 성과 알려줘')">웹상점 성과</button>
+                <button onclick="sendQuickReply('커뮤니티 프로젝트 요약해줘')">커뮤니티 요약</button>
+                <button onclick="sendQuickReply('게임 회사의 브랜드 사이트 개념에 대해 역할 알려줘')">브랜드 사이트란?</button>
+            </div>
+            <div class="ai-chat-footer">
+                <input type="text" id="aiInput" placeholder="이다은 기획자에 대해 물어보세요..." onkeypress="if(event.key === 'Enter') sendChatMessage()">
+                <button onclick="sendChatMessage()">전송</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
