@@ -1,6 +1,13 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+:root {
+    color-scheme: light only;
+}
 
+html, body {
+    color-scheme: light only;
+    background-color: #fefdfa !important;
+}
 /* ==========================================
    1. 기본 스크롤, 폰트 및 배경 설정
    ========================================== */
