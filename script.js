@@ -1,340 +1,371 @@
-// ==========================================================================
-// 📑 1. 탭 메뉴 활성화 및 데이터 카운팅 애니메이션 트리거
-// ==========================================================================
-function openTab(evt, tabName) {
-    let i, tabcontent, tabbuttons;
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.remove("active");
-        tabcontent[i].classList.remove("fade-in");
-        tabcontent[i].style.display = "none";
-    }
-    tabbuttons = document.getElementsByClassName("tab-button");
-    for (i = 0; i < tabbuttons.length; i++) {
-        tabbuttons[i].classList.remove("active");
-    }
-    const targetTab = document.getElementById(tabName);
-    targetTab.style.display = "block";
-    setTimeout(() => {
-        targetTab.classList.add("fade-in");
-        triggerCountUp(targetTab);
-    }, 20);
-    evt.currentTarget.classList.add("active");
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Portfolio Loaded Successfully");
 
-// ==========================================================================
-// 🌓 2. 인터랙션: 다크/라이트 테마 원자적 전환 로직
-// ==========================================================================
-function toggleTheme() {
-    const body = document.body;
-    const themeIcon = document.getElementById("theme-icon");
-    const currentTheme = body.getAttribute("data-theme");
+    // === 이메일 클립보드 복사 기능 ===
+    const copyBtns = document.querySelectorAll('.btn-copy-email');
+    const toast = document.getElementById('copy-toast');
+    let toastTimeout;
 
-    if (!themeIcon) return;
+    copyBtns.forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = btn.getAttribute('data-email') || 'yde8359@naver.com';
 
-    themeIcon.classList.add("slide-out");
+            try {
+                await navigator.clipboard.writeText(email);
 
-    setTimeout(() => {
-        if (currentTheme === "dark") {
-            body.removeAttribute("data-theme");
-            localStorage.setItem("theme", "light");
-            themeIcon.src = "images/light.png";
-        } else {
-            body.setAttribute("data-theme", "dark");
-            localStorage.setItem("theme", "dark");
-            themeIcon.src = "images/dark.png";
-        }
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    icon.className = 'fa-solid fa-check text-emerald-500 text-sm';
+                    setTimeout(() => {
+                        icon.className = 'fa-regular fa-copy text-sm';
+                    }, 1500);
+                }
 
-        themeIcon.classList.remove("slide-out");
-        themeIcon.classList.add("slide-prepare");
+                if (toast) {
+                    clearTimeout(toastTimeout);
+                    toast.classList.remove('opacity-0', 'pointer-events-none');
+                    toast.classList.add('opacity-100');
 
-        setTimeout(() => {
-            themeIcon.classList.remove("slide-prepare");
-        }, 20);
-
-    }, 200);
-}
-
-// ==========================================================================
-// 📈 3. 인터랙션: 수치 카운트업 타이머 연산 엔진
-// ==========================================================================
-function triggerCountUp(scope) {
-    const counters = scope.querySelectorAll('.count-up');
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'), 10);
-        if (isNaN(target)) return;
-        
-        counter.innerText = "0"; 
-        let count = 0;
-        const speed = target / 25;
-
-        const updateCount = () => {
-            count += speed;
-            if (count < target) {
-                counter.innerText = Math.floor(count);
-                setTimeout(updateCount, 30);
-            } else {
-                counter.innerText = target;
+                    toastTimeout = setTimeout(() => {
+                        toast.classList.remove('opacity-100');
+                        toast.classList.add('opacity-0', 'pointer-events-none');
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('클립보드 복사 실패:', err);
             }
-        };
-        updateCount();
+        });
     });
-}
 
-// ==========================================================================
-// 🚀 전체 생태계 DOM 빌드 시동 제어
-// ==========================================================================
-document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    const themeIcon = document.getElementById("theme-icon");
+    // === 커스텀 마우스 커서 ===
+    const cursor = document.createElement('div');
+    const cursorDot = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    cursorDot.classList.add('custom-cursor-dot');
+    document.body.appendChild(cursor);
+    document.body.appendChild(cursorDot);
 
-    if (savedTheme === "dark") {
-        document.body.setAttribute("data-theme", "dark");
-        if (themeIcon) themeIcon.src = "images/dark.png";
-    } else {
-        document.body.removeAttribute("data-theme");
-        if (themeIcon) themeIcon.src = "images/light.png";
-    }
-
-    const defaultTab = document.getElementById("web-shop");
-    if(defaultTab) {
-        setTimeout(() => { 
-            defaultTab.classList.add("fade-in"); 
-            triggerCountUp(defaultTab); 
-        }, 50);
-    }
-    
-    initSliders();
-    initCustomCursor();
-});
-
-// ==========================================================================
-// 🎯 4. 인터랙션: 기획자 시선 트래킹
-// ==========================================================================
-function initCustomCursor() {
-    const cursor = document.querySelector('.custom-cursor');
-    if (!cursor) return;
+    let mouseX = -100;
+    let mouseY = -100;
+    let cursorX = -100;
+    let cursorY = -100;
 
     window.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
     });
 
-    const clickables = document.querySelectorAll('a, button, .slider-dot, .slider-slide img, .ai-quick-replies button');
-    clickables.forEach(elem => {
-        elem.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1.6)';
-            cursor.style.backgroundColor = 'rgba(24, 101, 164, 0.08)';
-        });
-        elem.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursor.style.backgroundColor = 'transparent';
-        });
-    });
-}
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.25;
+        cursorY += (mouseY - cursorY) * 0.25;
 
-// ==========================================================================
-// 🖼️ 5. 이미지 슬라이더 코어 프로세스
-// ==========================================================================
-function initSliders() {
-    const containers = document.querySelectorAll('.slider-container');
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+        cursorDot.style.opacity = '0';
+    });
     
-    containers.forEach(container => {
-        const wrapper = container.querySelector('.slider-wrapper');
-        if (!wrapper) return;
-        
-        if (!container.querySelector('.slider-container-inner')) {
-            const innerDiv = document.createElement('div');
-            innerDiv.classList.add('slider-container-inner');
-            container.insertBefore(innerDiv, wrapper);
-            innerDiv.appendChild(wrapper);
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+        cursorDot.style.opacity = '1';
+    });
+
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, [role="button"], input, textarea')) {
+            cursor.classList.add('hovered');
+        } else {
+            cursor.classList.remove('hovered');
         }
+    });
 
-        const slides = container.querySelectorAll('.slider-slide');
-        const pagination = container.querySelector('.slider-pagination');
-        const caption = container.querySelector('.slider-caption');
-        if (slides.length === 0) return;
-        
-        let currentIndex = 0;
-        let isDragging = false;
-        let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationId = 0;
-        let autoFlipTimer = null;
-
-        if (slides.length === 1) {
-            if (pagination) pagination.style.display = 'none';
-            if (caption) caption.style.display = 'none'; 
-            container.style.cursor = 'default';
-            updateManualCaption(0);
-            return; 
-        }
-
-        if (pagination) pagination.style.display = 'flex';
-        if (caption) caption.style.display = 'block';
-        container.style.cursor = 'grab';
-
-        pagination.innerHTML = '';
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('slider-dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                goToSlide(index);
-                resetAutoFlip();
-            });
-            pagination.appendChild(dot);
+    // 앵커 링크 부드러운 스크롤
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
-        
-        const dots = pagination.querySelectorAll('.slider-dot');
-        updateManualCaption(0);
-        
-        container.addEventListener('mousedown', dragStart);
-        container.addEventListener('mouseup', dragEnd);
-        container.addEventListener('mousemove', dragMove);
-        container.addEventListener('mouseleave', dragEnd);
-        
-        container.addEventListener('touchstart', dragStart, {passive: true});
-        container.addEventListener('touchend', dragEnd);
-        container.addEventListener('touchmove', dragMove, {passive: true});
-        
-        startAutoFlip();
-        
-        function dragStart(e) {
-            resetAutoFlip();
-            isDragging = true;
-            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-            animationId = requestAnimationFrame(animation);
+    });
+
+    // === 캐러셀 & 모달 라이트박스 제어 ===
+    const track = document.getElementById('process-carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const indicatorsContainer = document.getElementById('carousel-indicators');
+
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modalPrevBtn = document.getElementById('modal-prev');
+    const modalNextBtn = document.getElementById('modal-next');
+
+    if (track && items.length > 0) {
+        let currentIndex = 0;
+        let modalCurrentIndex = 0;
+        const totalSlides = items.length;
+        let slideInterval;
+
+        const imageSources = Array.from(items).map(item => item.getAttribute('data-img') || item.querySelector('img').src);
+
+        items.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.className = `h-2.5 rounded-full transition-all ${idx === 0 ? 'bg-brand-yellow w-6' : 'bg-slate-300 w-2.5 hover:bg-slate-400'}`;
+            dot.addEventListener('click', () => {
+                goToSlide(idx);
+                resetTimer();
+            });
+            indicatorsContainer.appendChild(dot);
+        });
+
+        const dots = indicatorsContainer.querySelectorAll('button');
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, idx) => {
+                if (idx === currentIndex) {
+                    dot.className = 'w-6 h-2.5 rounded-full bg-brand-yellow transition-all';
+                } else {
+                    dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all';
+                }
+            });
         }
-        
-        function dragMove(e) {
-            if (!isDragging) return;
-            const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-            currentTranslate = prevTranslate + (currentX - startX);
-        }
-        
-        function dragEnd(e) {
-            if (!isDragging) return;
-            isDragging = false;
-            cancelAnimationFrame(animationId);
-            
-            const endX = e.type.includes('mouse') ? e.pageX : (e.changedTouches ? e.changedTouches[0].clientX : startX);
-            const moveX = endX - startX;
-            
-            if (moveX < -50 && currentIndex < slides.length - 1) currentIndex += 1;
-            if (moveX > 50 && currentIndex > 0) currentIndex -= 1;
-            
-            goToSlide(currentIndex);
-            startAutoFlip();
-        }
-        
-        function animation() {
-            wrapper.style.transform = `translateX(${currentTranslate}px)`;
-            if (isDragging) requestAnimationFrame(animation);
-        }
-        
+
         function goToSlide(index) {
             currentIndex = index;
-            const innerWrapper = container.querySelector('.slider-container-inner');
-            currentTranslate = currentIndex * -innerWrapper.offsetWidth;
-            prevTranslate = currentTranslate;
-            wrapper.style.transform = `translateX(${currentTranslate}px)`;
-            
-            dots.forEach(d => d.classList.remove('active'));
-            if(dots[currentIndex]) dots[currentIndex].classList.add('active');
-            
-            updateManualCaption(currentIndex);
+            if (currentIndex >= totalSlides) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = totalSlides - 1;
+            updateCarousel();
         }
 
-        function updateManualCaption(index) {
-            if (!caption) return;
-            const currentSlide = slides[index];
-            if (currentSlide) {
-                const img = currentSlide.querySelector('img');
-                const altText = img ? img.getAttribute('alt') : '';
-                caption.textContent = altText;
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetTimer();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+                resetTimer();
+            });
+        }
+
+        function updateModalImage(index) {
+            modalCurrentIndex = index;
+            if (modalCurrentIndex >= totalSlides) modalCurrentIndex = 0;
+            if (modalCurrentIndex < 0) modalCurrentIndex = totalSlides - 1;
+
+            if (modalImg) {
+                modalImg.src = imageSources[modalCurrentIndex];
             }
         }
-        
-        function startAutoFlip() {
-            autoFlipTimer = setInterval(() => {
-                if (currentIndex < slides.length - 1) currentIndex++;
-                else currentIndex = 0;
-                goToSlide(currentIndex);
-            }, 3000);
-        }
-        
-        function resetAutoFlip() { clearInterval(autoFlipTimer); }
-    });
-}
 
-// ==========================================================================
-// 🤖 6. AI 챗봇 컴포넌트 핵심 비즈니스 로직
-// ==========================================================================
-function toggleChatWindow() {
-    const chatWindow = document.getElementById('aiChatWindow');
-    chatWindow.classList.toggle('active');
-}
-
-function sendQuickReply(text) {
-    document.getElementById('aiInput').value = text;
-    sendChatMessage();
-}
-
-async function sendChatMessage() {
-    const inputEl = document.getElementById('aiInput');
-    const chatBody = document.getElementById('chatBody');
-    const userText = inputEl.value.trim();
-    
-    if (!userText) return;
-
-    // 유저 버블 생성
-    const userBubble = document.createElement('div');
-    userBubble.className = 'chat-bubble user';
-    userBubble.innerText = userText;
-    chatBody.appendChild(userBubble);
-    inputEl.value = '';
-    chatBody.scrollTop = chatBody.scrollHeight;
-
-    // AI 로딩 스피너 버블 생성
-    const aiBubble = document.createElement('div');
-    aiBubble.className = 'chat-bubble ai';
-    aiBubble.innerText = '생각 중...';
-    chatBody.appendChild(aiBubble);
-    chatBody.scrollTop = chatBody.scrollHeight;
-
-    // 보안 우회 및 순수 프론트엔드 구동을 위한 무료 Gemini API 엔드포인트 직접 호출
-    // ⚠️ 실서비스 배포 시에는 API 키 탈취 위험이 있으므로 백엔드 이전을 권장합니다.
-    const GEMINI_API_KEY = "AQ.Ab8RN6I9-rcoNQwsIMXoY_DwFsuVNMnpVEzHJZSG7aoMsxDmrw"; 
-    const targetModel = 'gemini-3-flash-preview';
-
-    // 포트폴리오 데이터를 기반으로 하는 AI 역할 정의 프롬프트 수혈
-    const systemInstruction = `당신은 서비스 기획자 '이다은'의 포트폴리오 안내 비서입니다. 제공된 데이터에 기반해 친절하고 전문적으로 기획자 이다은을 대변하세요.
-    [주요 이력 정보]
-    1. 웹 상점 구축: 이커머스 백오피스 구축(상점 세팅 공수 80% 이상 절감), 사내 최초 쿠폰/포인트 시스템 설계, 프론트 결제 플로우 여정 개선으로 이탈률 13% 감소.
-    2. 커뮤니티 플랫폼: 인바운드 트래픽 제고를 위한 4대 핵심 템플릿(리스트/섬네일 등) 설계 및 배포 리소스 단축 기틀 마련.
-    3. 브랜드 사이트: '스타시드' 사전예약 전환율 70% 달성, 일본 타겟 '프로야구라이징' 최적화 및 재방문율 10% 방어.
-    답변은 3줄 이내로 핵심 위주로 문맥에 맞게 두괄식으로 간결하게 작성하세요.`;
-
-    try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${GEMINI_API_KEY}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: `${systemInstruction}\n\n사용자 질문: ${userText}` }] }]
-            })
+        items.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                if (modal && modalImg) {
+                    updateModalImage(index);
+                    modal.classList.remove('hidden');
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modal.classList.add('flex', 'opacity-100');
+                    }, 10);
+                }
+            });
         });
 
-        const data = await response.json();
-        const aiResponseText = data.candidates[0].content.parts[0].text;
-        aiBubble.innerText = aiResponseText;
-    } catch (error) {
-    // 이 부분을 원하는 문구로 변경하세요
-    aiBubble.innerText = '⚠️ 현재 AI 호출량이 많아 잠시 서비스가 제한되었습니다. 잠시 후 다시 시도해 주세요!';
-    console.error(error);
-    } finally {
-        chatBody.scrollTop = chatBody.scrollHeight;
+        if (modalPrevBtn) {
+            modalPrevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateModalImage(modalCurrentIndex - 1);
+            });
+        }
+
+        if (modalNextBtn) {
+            modalNextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateModalImage(modalCurrentIndex + 1);
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (modal && !modal.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') updateModalImage(modalCurrentIndex - 1);
+                if (e.key === 'ArrowRight') updateModalImage(modalCurrentIndex + 1);
+                if (e.key === 'Escape') closeModal();
+            }
+        });
+
+        function closeModal() {
+            if (modal) {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        }
+
+        if (track.parentElement) {
+            track.parentElement.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            track.parentElement.addEventListener('mouseleave', () => startTimer());
+        }
+
+        startTimer();
     }
-}
+
+    // === AI 챗봇 연동 기능 (안정화 및 URL 수정 적용) ===
+    const GEMINI_API_KEY = 'AQ.Ab8RN6Km5LRoYfG0h7leaY6oDtZ8wTm8-MOlyey7RK0YJ-hUjg';
+
+    const chatbotToggleBtn = document.getElementById('chatbot-toggle-btn');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatbotCloseBtn = document.getElementById('chatbot-close-btn');
+    const chatbotForm = document.getElementById('chatbot-form');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+
+    if (chatbotToggleBtn && chatbotWindow) {
+        // 챗봇 창 열기/닫기 토글
+        chatbotToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatbotWindow.classList.toggle('hidden');
+            chatbotWindow.classList.toggle('flex');
+        });
+
+        if (chatbotCloseBtn) {
+            chatbotCloseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                chatbotWindow.classList.add('hidden');
+                chatbotWindow.classList.remove('flex');
+            });
+        }
+
+        // 메시지 화면 출력 함수
+        function appendMessage(text, isUser = false) {
+            if (!chatbotMessages) return;
+            const msgDiv = document.createElement('div');
+            msgDiv.className = isUser
+                ? 'bg-brand-blue text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] ml-auto shadow-sm leading-relaxed break-words'
+                : 'bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 max-w-[85%] shadow-sm leading-relaxed text-slate-800 break-words';
+            msgDiv.innerText = text;
+            chatbotMessages.appendChild(msgDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Gemini API 호출 함수 (올바른 v1beta 엔드포인트 및 gemini-1.5-flash 지원 모델 적용)
+        async function fetchGeminiResponse(userPrompt) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+            
+            const fullPrompt = `
+[역할 지정]
+당신은 기획자 '이다은'의 포트폴리오 안내 AI 도우미입니다. 아래 정보를 바탕으로 방문자의 질문에 친절하고 정중하게 답변하세요.
+
+[이력 및 정보]
+- 이름: 이다은
+- 경력: 인터파크 커머스 기획팀 (2021.06 ~ 2023.06) / 컴투스 웹기획팀 (2023.07 ~ 재직 중)
+- 학력: 연세대학교 (컴퓨터공학, 생활디자인)
+
+[프로젝트 1: 글로벌 웹 상점 구축]
+- 성과: 상점 세팅 공수 80% 감소(4주->3일), 전체 매출 대비 웹 매출 비중 5% 증가, 1인당 평균 결제액 15% 증가, 결제 진입 후 이탈률 8% 감소
+- 주요내용: 백오피스 구축, 쿠폰/포인트 시스템 사내 최초 구축, 16개 언어 대상 글로벌 이커머스 최적화
+
+[프로젝트 2: 자체 커뮤니티 플랫폼 구축]
+- 성과: 브랜드 사이트 리텐션 60% 방어, 외부 솔루션 구독 비용 100% 절감, 차기 구축 개발 공수 약 4개월 단축
+- 주요내용: 4개 게시판 템플릿 제공, 어뷰징 관리 백오피스 분리, 마이페이지 활동 내역 제공
+
+[사용자 질문]
+${userPrompt}
+`;
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{ text: fullPrompt }]
+                    }]
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                console.error("Gemini API Detail Error:", data);
+                throw new Error(data.error?.message || `HTTP ${response.status} 오류`);
+            }
+
+            return data.candidates[0].content.parts[0].text;
+        }
+
+        // 폼 제출 이벤트 핸들러
+        if (chatbotForm) {
+            chatbotForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const userText = chatbotInput.value.trim();
+                if (!userText) return;
+
+                appendMessage(userText, true);
+                chatbotInput.value = '';
+
+                // 로딩 안내
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 max-w-[85%] shadow-sm text-slate-400 italic';
+                loadingDiv.innerText = '답변 작성 중...';
+                chatbotMessages.appendChild(loadingDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+                try {
+                    const aiReply = await fetchGeminiResponse(userText);
+                    chatbotMessages.removeChild(loadingDiv);
+                    appendMessage(aiReply, false);
+                } catch (error) {
+                    console.error('Chatbot Call Error:', error);
+                    chatbotMessages.removeChild(loadingDiv);
+                    appendMessage(`오류 발생: ${error.message}`, false);
+                }
+            });
+        }
+    }
+});

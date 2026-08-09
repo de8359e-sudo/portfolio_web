@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자체 커뮤니티 플랫폼 구축 | 이다은 포트폴리오</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- 동일 경로 style.css 연결 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen antialiased">
+
+    <!-- Header / Navigation bar -->
+    <nav class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="index.html#projects" class="inline-flex items-center text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i> 목록으로 돌아가기
+            </a>
+            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">커뮤니티</span>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+        
+        <!-- Hero Section -->
+        <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
+            
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-3">
+                    <div class="inline-block px-3 py-1 bg-blue-500/20 text-blue-300 border border-blue-400/30 text-xs font-semibold rounded-full mb-1">
+                        참여율 100% (기획 및 프로젝트 리딩)
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight">
+                        커뮤니티 서비스 구축
+                    </h1>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl">
+                        외부 커뮤니티 의존도 최소화 및 브랜드 사이트 활성화를 위한 자체 통합 커뮤니티 플랫폼
+                    </p>
+                    
+                    <div class="border-t border-slate-800 pt-4 mt-4 space-y-2 text-xs text-slate-400">
+                        <div>
+                            <span class="flex items-center"><i class="fa-regular fa-calendar text-blue-400 mr-1.5"></i> 2025.12 ~ 2026.08</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+                            <span class="flex items-center"><i class="fa-solid fa-link text-blue-400 mr-1.5"></i> <a href="https://zeus.com2us.com/news/notice" target="_blank" class="hover:underline text-blue-300">ZEUS 커뮤니티 공지사항</a></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-1 overflow-hidden rounded-2xl shadow-lg border border-slate-800 bg-slate-800/50">
+                    <img 
+                        src="/images/community/zeus_community.png" 
+                        alt="자체 커뮤니티 썸네일" 
+                        class="w-full h-auto object-cover rounded-2xl hover:scale-105 transition-transform duration-300"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- 본문 내용 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200/80 space-y-10">
+            <!-- 1. Background -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center">
+                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3 font-black">1</span>
+                    진행 배경 및 문제 의식
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/60 space-y-3">
+                        <div class="font-bold text-slate-800 text-sm pb-2 border-b border-amber-200/60 text-amber-900 flex items-start gap-2 break-keep">
+                            <i class="fa-solid fa-circle-exclamation text-amber-600 mt-0.5 shrink-0"></i>
+                            <span>유저 방문율 지속 감소</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed break-keep">
+                            게임 론칭 이후 브랜드 사이트 내 <strong class="font-bold text-slate-900">유저 간 소통 창구 부재</strong>로 유저 이탈 촉진
+                        </p>
+                    </div>
+
+                    <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/60 space-y-3">
+                        <div class="font-bold text-slate-800 text-sm pb-2 border-b border-amber-200/60 text-amber-900 flex items-start gap-2 break-keep">
+                            <i class="fa-solid fa-circle-exclamation text-amber-600 mt-0.5 shrink-0"></i>
+                            <span>외부 툴 의존 한계</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed break-keep">
+                            외부 솔루션 의존으로 인한 <strong class="font-bold text-slate-900">UI 제약 및 도메인 파편화</strong>, 유저 <strong class="font-bold text-slate-900">데이터 트래킹의 한계</strong> 명확
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <div class="text-center mb-4">
+                        <i class="fa-solid fa-arrow-down text-slate-400 text-lg animate-bounce"></i>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex-1 text-center space-y-1 w-full break-keep">
+                            <div class="w-10 h-10 mx-auto rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg mb-2">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="text-slate-600 text-xs">공지 및 유저 커뮤니티 제공을 통한</div>
+                            <div class="font-bold text-slate-900 text-sm">유저 리텐션 및 인바운드 트래픽 제고</div>
+                        </div>
+
+                        <div class="text-slate-400 font-bold text-xl hidden md:block">+</div>
+
+                        <div class="flex-1 text-center space-y-1 w-full break-keep">
+                            <div class="w-10 h-10 mx-auto rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg mb-2">
+                                <i class="fa-solid fa-cubes"></i>
+                            </div>
+                            <div class="text-slate-600 text-xs">다양한 형태의 UI 및 기능 개발을 통해</div>
+                            <div class="font-bold text-slate-900 text-sm">외부툴 의존 제거 및 추후 활용 가능성 고려</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- 2. Process -->
+            <div class="space-y-4">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center">
+                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3 font-black">2</span>
+                    해결 과정
+                </h2>
+                <div class="space-y-4 text-sm">
+                    
+                    <!-- STEP 1 -->
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="font-bold text-blue-700 text-xs px-2.5 py-1 bg-blue-100 rounded-lg inline-block">STEP 1 - 기본 문서 정리</span>
+                        
+                        <ul class="space-y-2 text-xs text-slate-700 list-disc pl-4">
+                            <li class="space-y-1">
+                                <span>백오피스 및 서비스 <strong class="font-bold text-slate-900">기능 정의</strong></span>
+                                <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                    <li>운영부서 니즈 취합 → 필수 기능 정리</li>
+                                    <li>PRD 및 기능명세서 작성</li>
+                                    <li>문서 구체화 과정 중 AI 활용</li>
+                                </ul>
+                            </li>
+                            <li class="space-y-1 pt-1">
+                                <span>커뮤니티 플랫폼 <strong class="font-bold text-slate-900">벤치마킹</strong></span>
+                                <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                    <li>기존 사용하던 외부 툴 기능 정리</li>
+                                    <li>블로그, 카페 등 게시글 작성 및 열람 기능을 제공하는 타사 서비스 조사</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="font-bold text-blue-700 text-xs px-2.5 py-1 bg-blue-100 rounded-lg inline-block">STEP 2 - 유관부서 논의 및 디테일 정리</span>
+                        
+                        <ul class="space-y-2 text-xs text-slate-700 list-disc pl-4">
+                            <li>
+                                <span>기능명세서 공유 및 <strong class="font-bold text-slate-900">개발 방식 논의</strong></span>
+                            </li>
+                            <li class="space-y-1">
+                                <span>개발 리소스 감안한 <strong class="font-bold text-slate-900">커스텀 가능/불가능 영역 분리</strong></span>
+                                <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                    <li>개발 리소스 감안</li>
+                                    <li>운영 부서 니즈 2차 취합</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                        <span class="font-bold text-blue-700 text-xs px-2.5 py-1 bg-blue-100 rounded-lg inline-block">STEP 3 - 기획서 작성</span>
+                        
+                        <!-- Front Office -->
+                        <div class="space-y-2 pt-1">
+                            <div class="font-bold text-blue-800 text-xs uppercase tracking-wider">Front Office</div>
+                            <ul class="space-y-2 text-xs text-slate-700 list-disc pl-4">
+                                <li>
+                                    <span>4개 템플릿 형태(리스트/섬네일/아코디언/가이드) 제공으로 <strong class="font-bold text-slate-900">운영 부서 니즈 충족 및 기획·개발 공수 최소화</strong></span>
+                                </li>
+                                <li>
+                                    <span>마이페이지 내 활동 내역 제공으로 <strong class="font-bold text-slate-900">유저 활동 편의성 제고</strong></span>
+                                </li>
+                                <li>
+                                    <span>게임 미연동 계정 제한 등 예외 케이스별 <strong class="font-bold text-slate-900">UX 라이팅 및 얼럿 시스템 최적화</strong></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Back Office -->
+                        <div class="space-y-2 pt-2">
+                            <div class="font-bold text-blue-800 text-xs uppercase tracking-wider">Back Office</div>
+                            <ul class="space-y-2 text-xs text-slate-700 list-disc pl-4">
+                                <li>
+                                    <span>효율적인 콘텐츠 관리를 위한 <strong class="font-bold text-slate-900">'설정 기능(GNB 구성, 게시판 템플릿 제어)'</strong>과 <strong class="font-bold text-slate-900">'운영 기능(게시글/신고/회원 관리)'</strong>의 <strong class="font-bold text-slate-900">구조적 분리</strong></span>
+                                </li>
+                                <li class="space-y-1">
+                                    <span>게시글 상세, 회원 상세는 모든 메뉴에서 진입 가능한 구조</span>
+                                    <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                        <li><strong class="font-bold text-slate-900">개발 작업 최소화, 사용자 이동 동선 최소화</strong></li>
+                                    </ul>
+                                </li>
+                                <li class="space-y-1">
+                                    <span><strong class="font-bold text-slate-900">어뷰징 대응</strong>을 위한 기능 제공</span>
+                                    <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                        <li>금칙어 관리</li>
+                                        <li>신고 관리(신고글 내역, 자동 삭제 및 회원 정지 기능)</li>
+                                        <li>삭제글 관리, 회원 관리</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 이미지 캐러셀 슬라이더 영역 -->
+                <div class="pt-4">
+                    <div class="relative overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-white group">
+                        <div id="process-carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="w-full shrink-0 relative cursor-pointer carousel-item" data-img="/images/community/back_menu.png">
+                                <img src="/images/community/back_menu.png" alt="프로세스 이미지 1" class="w-full h-64 sm:h-96 object-contain bg-white">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="bg-slate-900/80 text-white text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> 클릭하여 확대</span>
+                                </div>
+                            </div>
+                            <div class="w-full shrink-0 relative cursor-pointer carousel-item" data-img="/images/community/back_detail.png">
+                                <img src="/images/community/back_detail.png" alt="프로세스 이미지 2" class="w-full h-64 sm:h-96 object-contain bg-white">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="bg-slate-900/80 text-white text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> 클릭하여 확대</span>
+                                </div>
+                            </div>
+                            <div class="w-full shrink-0 relative cursor-pointer carousel-item" data-img="/images/community/community_list.png">
+                                <img src="/images/community/community_list.png" alt="프로세스 이미지 3" class="w-full h-64 sm:h-96 object-contain bg-white">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="bg-slate-900/80 text-white text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> 클릭하여 확대</span>
+                                </div>
+                            </div>
+                            <div class="w-full shrink-0 relative cursor-pointer carousel-item" data-img="/images/community/community_my.png">
+                                <img src="/images/community/community_my.png" alt="프로세스 이미지 4" class="w-full h-64 sm:h-96 object-contain bg-white">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="bg-slate-900/80 text-white text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> 클릭하여 확대</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="carousel-prev" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-800/70 hover:bg-slate-900 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md">
+                            <i class="fa-solid fa-chevron-left text-sm"></i>
+                        </button>
+                        <button id="carousel-next" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-800/70 hover:bg-slate-900 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md">
+                            <i class="fa-solid fa-chevron-right text-sm"></i>
+                        </button>
+
+                        <div id="carousel-indicators" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- 3. Key Results -->
+            <div class="space-y-4">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center">
+                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3 font-black">3</span>
+                    개선 결과
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100/80">
+                        <div class="text-3xl font-extrabold text-blue-600">60% 방어</div>
+                        <div class="text-xs font-semibold text-slate-700 mt-1">브랜드 사이트 리텐션</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">자체 소통 창구 활성화</div>
+                    </div>
+
+                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100/80">
+                        <div class="text-3xl font-extrabold text-blue-600">100%↓</div>
+                        <div class="text-xs font-semibold text-slate-700 mt-1">외부 솔루션 구독 비용</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">커뮤니티 템플릿 기반 확립</div>
+                    </div>
+
+                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100/80">
+                        <div class="text-3xl font-extrabold text-blue-600">4개월↓</div>
+                        <div class="text-xs font-semibold text-slate-700 mt-1">차기 구축 개발 공수</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">템플릿 기반 확립</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Retrospect -->
+            <div class="p-6 bg-slate-900 text-slate-200 rounded-2xl text-xs sm:text-sm space-y-3 break-keep">
+                <div class="font-bold text-amber-400 text-base flex items-center">
+                    <i class="fa-solid fa-lightbulb mr-2"></i> Retrospect & Insight
+                </div>
+                <ul class="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
+                    <li>
+                        프로젝트 초기 단계에서 기능 명세서를 선제적으로 정의하여 <strong class="font-bold text-white">엣지 케이스를 조기 발견하고 스펙 조율 시간을 단축함</strong>
+                    </li>
+                    <li>
+                        플랫폼 단위 기획 시 화면 설계에 앞서 <strong class="font-bold text-white">도메인 정책 및 회원 권한 매트릭스 선결의 중요성 체득</strong><br>
+                        <span class="text-slate-400 text-xs">(설계 오류로 인한 개발 리워크 최소화)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 하단 바로가기 버튼 -->
+        <div class="text-center pt-4">
+            <a href="project-1.html" class="inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-blue-600 rounded-2xl shadow-md transition-all">
+                <i class="fa-solid fa-arrow-left mr-2"></i> 웹 상점 프로젝트 보러가기
+            </a>
+        </div>
+    </main>
+
+    <!-- 팝업 모달 라이트박스 -->
+    <div id="image-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 sm:p-10 transition-all duration-300 opacity-0" style="z-index: 99999;">
+        <div class="relative max-w-6xl w-full h-full max-h-[85vh] flex items-center justify-center">
+            
+            <button id="close-modal" class="absolute top-2 right-2 text-white/80 hover:text-white bg-slate-800/80 hover:bg-black w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold z-50 transition-all shadow-md">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <button id="modal-prev" class="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800/80 hover:bg-black text-white flex items-center justify-center transition-all z-40 shadow-lg border border-white/10">
+                <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
+            </button>
+
+            <div class="w-full h-full flex items-center justify-center px-12 sm:px-16">
+                <img id="modal-img" src="" alt="확대 이미지" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-all duration-200">
+            </div>
+
+            <button id="modal-next" class="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800/80 hover:bg-black text-white flex items-center justify-center transition-all z-40 shadow-lg border border-white/10">
+                <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 동일 경로 script.js 연결 -->
+    <script src="script.js"></script>
+<!-- AI Floating Chatbot Widget -->
+    <div id="ai-chatbot-container" class="fixed bottom-6 right-6 z-[99999]">
+        <button id="chatbot-toggle-btn" class="w-14 h-14 bg-brand-blue text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 relative">
+            <!-- 기본 로봇 아이콘 -->
+            <i class="fa-solid fa-robot text-2xl absolute icon-robot"></i>
+            <!-- 전환될 AI 텍스트 -->
+            <span class="text-xl font-black absolute icon-text-ai">AI</span>
+        </button>
+
+        <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex-col transition-all">
+            <div class="bg-brand-blue text-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-robot text-brand-yellow text-lg"></i>
+                    <span class="font-bold text-sm">이다은 포트폴리오 AI 도우미</span>
+                </div>
+                <button id="chatbot-close-btn" class="text-white/80 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="chatbot-messages" class="p-4 h-80 overflow-y-auto space-y-3 text-xs bg-slate-50">
+                <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 max-w-[85%] shadow-sm leading-relaxed">
+                    안녕하세요! 이다은 기획자의 포트폴리오 AI 도우미입니다. 궁금한 점을 물어보세요! 😊
+                </div>
+            </div>
+
+            <form id="chatbot-form" class="p-3 bg-white border-t border-slate-200 flex gap-2">
+                <input type="text" id="chatbot-input" placeholder="메시지를 입력하세요..." class="flex-1 px-3 py-2 text-xs border border-slate-300 rounded-xl focus:outline-none focus:border-brand-blue" required>
+                <button type="submit" class="px-3 py-2 bg-brand-blue text-white text-xs rounded-xl font-bold hover:bg-blue-700 transition-colors">전송</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

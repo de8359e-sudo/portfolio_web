@@ -1,334 +1,171 @@
-/* 기본 스타일 리셋 및 폰트 정의 */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-}
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 
-/* 🌓 [인터랙션 핵심 교정] 기존 색상들을 변수화하여 다크모드와 다이렉트로 연결 */
+/* ==========================================
+   1. 기본 스크롤, 폰트 및 배경 설정
+   ========================================== */
 body {
-    --bg-body: #fffae7;        /* 라이트모드 연노랑 바탕 */
-    --bg-container: #ffffff;   /* 라이트모드 컨테이너 화이트 */
-    --bg-box-pc: #ffffff;      /* 라이트모드 PC/TA 분기 박스 연노랑 */
-    --text-primary: #212529;
-    --text-dark: #111111;
-    --border-color: #e9ecef;
-    --cursor-ring: rgba(24, 101, 164, 0.4);
-    --bg-chat-window: #ffffff;
-    --bg-chat-bubble-ai: #f1f3f5;
-    --bg-chat-bubble-user: #1865A4;
-    --text-chat-user: #ffffff;
+    font-family: 'Noto Sans KR', 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    cursor: none;
+    background-color: #fefdfa !important;
 }
 
-body[data-theme="dark"] {
-    --bg-body: #121212;        /* 다크모드 어두운 배경 */
-    --bg-container: #1e1e1e;   /* 다크모드 컨테이너 */
-    --bg-box-pc: #2a261f;      /* 다크모드 PC 박스 */
-    --text-primary: #e0e0e0;
-    --text-dark: #ffffff;
-    --border-color: #333333;
-    --cursor-ring: rgba(255, 219, 98, 0.4);
-    --bg-chat-window: #252525;
-    --bg-chat-bubble-ai: #383838;
-    --bg-chat-bubble-user: #FFDB62;
-    --text-chat-user: #111111;
+*, *::before, *::after {
+    cursor: none !important;
 }
 
-body {
-    background-color: var(--bg-body);
-    color: var(--text-primary);
-    line-height: 1.6;
-    padding: 20px 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+/* ==========================================
+   2. 커스텀 테마 색상 클래스
+   ========================================== */
+.text-brand-blue { color: #1865A4; }
+.bg-brand-blue { background-color: #1865A4; }
+.border-brand-blue { border-color: #1865A4; }
+
+.text-brand-yellow { color: #FFDB62; }
+.bg-brand-yellow { background-color: #FFDB62; }
+
+.bg-brand-yellow-light { background-color: rgba(255, 219, 98, 0.25); }
+.bg-brand-blue-light { background-color: rgba(24, 101, 164, 0.08); }
+.border-brand-blue-light { border-color: rgba(24, 101, 164, 0.2); }
+
+/* ==========================================
+   3. 공통 레이아웃 & UI 컴포넌트
+   ========================================== */
+.layout-container {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-@media (min-width: 768px) {
-    body { cursor: none; }
+/* Glassmorphism 네비게이션 카드 */
+.glass-card {
+    background: rgba(255, 254, 249, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    background: var(--bg-container);
-    border-radius: 12px;
-    padding: 15px;
-    transition: background-color 0.3s ease;
+/* 섹션 카드 공통 */
+.card-white {
+    @apply bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200/80;
 }
 
-header {
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 30px;
-    margin-bottom: 35px;
-    position: relative;
+/* 문제 의식 (경고) 카드 */
+.card-warning {
+    @apply bg-amber-50/60 p-4 sm:p-5 rounded-2xl border border-amber-200/60 space-y-3 flex flex-col justify-between;
 }
 
-header .badge {
-    display: inline-block;
-    background: #1865A4;
-    color: #ffffff;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 24px;
+.card-warning-title {
+    @apply font-bold text-slate-800 text-sm pb-2.5 border-b border-amber-200/60 text-amber-900 flex items-start gap-2 break-keep tracking-tight;
+}
+
+.card-warning-list {
+    @apply text-xs text-slate-700 space-y-2 list-disc pl-4 mt-3 leading-relaxed break-keep tracking-tight;
+}
+
+/* 하단 해결 방향/스텝 공통 카드 (회색 배경 스타일) */
+.card-step {
+    background-color: #f8fafc; /* bg-slate-50 */
+    border: 1px solid #e2e8f0; /* border-slate-200 */
+    border-radius: 1rem;       /* rounded-2xl */
+    padding: 1.25rem;          /* p-5 */
+}
+
+/* 주요 포인트 테마 클래스 */
+.text-point-blue {
+    color: #1d4ed8;            /* text-blue-700 */
+}
+
+.badge-blue {
+    background-color: #dbeafe; /* bg-blue-100 */
+    color: #1d4ed8;            /* text-blue-700 */
     font-weight: 700;
-    margin-bottom: 14px;
-    letter-spacing: 0.5px;
-}
-
-header h1 {
-    font-size: 24px;
-    color: var(--text-dark);
-    font-weight: 800;
-    margin-bottom: 10px;
-    word-break: keep-all;
-    border-left: 5px solid #1865A4;
-    padding-left: 12px;
-    line-height: 1.3;
-}
-
-header p {
-    font-size: 14px;
-    color: #6c757d;
-    padding-left: 17px;
-}
-
-@media (min-width: 768px) {
-    header h1 { font-size: 30px; }
-    header p { font-size: 15px; }
-}
-
-.tabs {
-    display: flex;
-    flex-wrap: wrap;
-    border-bottom: 2px solid var(--border-color);
-    margin-bottom: 25px;
-    position: sticky;
-    top: 0;            
-    background: var(--bg-container); 
-    z-index: 100;      
-    padding-top: 5px;
-}
-
-.tab-button {
-    flex: 1;
-    min-width: 80px;
-    padding: 12px 5px;
-    background: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 600;
-    color: #868e96;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-    word-break: keep-all;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.5rem;
     display: inline-block;
 }
 
-.tab-button:hover { color: #1865A4; }
-.tab-button.active { color: #1865A4; border-bottom: 3px solid #1865A4; font-weight: 700; }
-
-.tab-container { position: relative; overflow: hidden; width: 100%; }
-.tab-content { display: none; opacity: 0; transform: translateY(15px); transition: opacity 0.4s ease, transform 0.4s ease; }
-.tab-content.active { display: block; }
-.tab-content.fade-in { opacity: 1; transform: translateY(0); }
-
-.project-header { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed var(--border-color); }
-.project-title { font-size: 18px; color: var(--text-dark); margin-bottom: 8px; }
-.project-summary { font-size: 14px; font-weight: 500; color: #495057; margin-bottom: 10px; }
-.project-meta { font-size: 13px; color: #6c757d; margin-bottom: 4px; }
-.project-meta a { color: #1865A4; text-decoration: none; font-weight: 500; }
-.project-meta a:hover { text-decoration: underline; }
-.project-meta-caption { margin: -10px 0 15px 5px; font-style: italic; font-size: 13px; color: #868e96; }
-.project-meta-alert { color: #1865A4; font-weight: 600; font-size: 13px; margin-top: 5px; }
-
-.section-block {
-    margin-bottom: 20px;
-    background: var(--bg-container);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 16px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+/* 세부 수치/성과 하이라이트 박스 */
+.badge-highlight {
+    @apply px-2.5 py-1 bg-brand-blue-light text-brand-blue text-xs font-extrabold rounded-lg;
 }
 
-.section-block h4 {
-    font-size: 14px;
-    color: #1865A4;
-    text-transform: none; 
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-    border-left: 4px solid #1865A4;
-    padding-left: 8px;
+/* 푸터 */
+.site-footer {
+    background-color: #134874;
+    color: #ffffff;
 }
 
-.section-block ul { list-style-type: none; }
-.section-block li { position: relative; padding-left: 14px; margin-bottom: 8px; font-size: 14px; color: var(--text-dark); }
-.section-block li::before { content: "•"; position: absolute; left: 0; color: #1865A4; font-weight: bold; }
-
-.sub-project-divider { margin: 30px 0 20px 0; border: 0; height: 1px; background: var(--border-color); }
-.sub-title { font-size: 15px; color: #1865A4; margin-bottom: 12px; font-weight: 700; background: #FFDB62; padding: 6px 12px; border-radius: 4px; display: inline-block; }
-
-@media (min-width: 768px) {
-    body { padding: 30px 20px; }
-    .container { padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); }
-    .section-block { background-color: var(--bg-box-pc) !important; border: 1px solid var(--border-color); }
-    header h1 { font-size: 30px; }
-    header p { font-size: 15px; }
-    .tab-button { font-size: 15px; padding: 14px 10px; }
-    .project-title { font-size: 20px; }
-    .project-summary, .section-block li { font-size: 14.5px; }
-    .sub-title { font-size: 16px; }
+/* 배경 블러 효과 */
+.profile-blur-bg-2 {
+    position: absolute;
+    bottom: -6rem;
+    left: -6rem;
+    width: 24rem;
+    height: 24rem;
+    background-color: rgba(24, 101, 164, 0.1);
+    border-radius: 9999px;
+    filter: blur(48px);
+    opacity: 0.7;
+    pointer-events: none;
 }
 
-@media (min-width: 1024px) {
-    body { padding: 50px 40px; }
-    .container { padding: 45px; }
-    header h1 { font-size: 28px; }
-    header p { font-size: 16px; }
-    .tab-button { font-size: 16px; padding: 16px 15px; }
-    .project-title { font-size: 22px; }
-    .project-summary { font-size: 15.5px; }
-    .section-block { padding: 22px; margin-bottom: 24px; }
-    .section-block h4 { font-size: 15px; }
-    .section-block li { font-size: 15px; margin-bottom: 10px; }
-    .sub-title { font-size: 17px; padding: 8px 16px; }
-}
-
-.slider-container { position: relative; width: 100%; max-width: 800px; margin: 15px auto 35px auto; overflow: visible; background: var(--bg-container); user-select: none; cursor: grab; }
-.slider-container:active { cursor: grabbing; }
-.slider-container-inner { width: 100%; overflow: hidden; border-radius: 8px; }
-.slider-wrapper { display: flex; width: 100%; height: auto; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform; }
-.slider-slide { flex: 0 0 100%; width: 100%; display: flex; justify-content: center; align-items: center; background: var(--bg-container); }
-.slider-slide img { width: 100%; height: auto; max-height: 450px; object-fit: contain; pointer-events: none; }
-.slider-caption { text-align: center; font-size: 14px; font-weight: 500; color: var(--text-primary); margin-top: 12px; min-height: 20px; }
-.slider-pagination { position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
-.slider-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(24, 101, 164, 0.2); cursor: pointer; transition: all 0.3s ease; }
-.slider-dot.active { width: 20px; border-radius: 4px; background: #1865A4; }
-
-@media (max-width: 767px) {
-    .slider-slide img { max-height: 280px; }
-    .slider-caption { font-size: 12.5px; margin-top: 8px; }
-    .slider-pagination { bottom: -20px; }
-}
-
+/* ==========================================
+   4. 커스텀 마우스 커서 스타일
+   ========================================== */
 .custom-cursor {
-    display: none;
-    position: fixed;
     width: 24px;
     height: 24px;
-    border: 2px solid var(--cursor-ring);
+    background-color: rgba(255, 218, 98, 0);
+    border: 2px solid #1865A4;
     border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: transform 0.08s ease-out, background-color 0.2s, border-color 0.3s;
-    z-index: 99999;
-}
-
-@media (min-width: 768px) { .custom-cursor { display: block; } }
-
-.count-up { display: inline-block; color: inherit; font-weight: inherit; }
-
-.theme-toggle-btn {
-    position: absolute;
-    top: 0;
-    right: 5px;
-    background: transparent;
-    border: 1px solid var(--border-color); 
-    border-radius: 50%;
-    padding: 6px;
-    width: 38px;
-    height: 38px; 
-    cursor: pointer;
-    z-index: 110;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; 
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.theme-toggle-btn:hover { transform: scale(1.1); background-color: var(--border-color); border-color: #1865A4; }
-[data-theme="dark"] .theme-toggle-btn:hover { border-color: var(--cursor-ring); }
-.theme-toggle-btn img.slide-out { transform: translateY(-150%); opacity: 0; }
-.theme-toggle-btn img.slide-prepare { transform: translateY(150%); opacity: 0; transition: none !important; }
-.theme-toggle-btn img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease; }
-
-/* ==========================================================================
-   🤖 추가된 AI 요약 위젯 컴포넌트 CSS 구조 세트
-   ========================================================================== */
-.ai-widget {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 2000;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999999 !important;
+    transition: transform 0.15s ease-out, background-color 0.2s ease, border-color 0.2s ease;
+    transform: translate(-50%, -50%);
+    will-change: transform, left, top;
 }
 
-/* 🤖 AI 이미지 버튼 완벽한 원형 및 크기 축소 최적화 (중복 합침) */
-/* 🤖 AI 이미지 버튼 완벽한 원형 및 크기 축소 최적화 */
-.ai-widget .ai-toggle-btn.img-button {
-    width: 50px !important;       /* 버튼 전체 가로 크기 */
-    height: 50px !important;      /* 버튼 전체 세로 크기 */
-    min-width: 50px !important;
-    padding: 0 !important;
-    border-radius: 50% !important; /* 완벽한 동그라미 형태로 마감 */
-    background: #1865A4 !important; /* 원래의 신뢰감 주는 파란색 배경 적용 */
-    border: none !important;
-    display: flex !important;
-    justify-content: center !important; /* 내부 이미지를 가로 가운데 정렬 */
-    align-items: center !important;    /* 내부 이미지를 세로 가운데 정렬 */
-    overflow: hidden !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-    cursor: pointer;
-    transition: transform 0.2s;
+.custom-cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #1865A4;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1000000 !important;
+    transform: translate(-50%, -50%);
+    will-change: left, top;
 }
 
-.ai-widget .ai-toggle-btn.img-button:hover { 
-    transform: scale(1.05); 
+.custom-cursor.hovered {
+    transform: translate(-50%, -50%) scale(1.6);
+    background-color: rgba(255, 219, 98, 0.7);
+    border-color: #1865A4;
 }
 
-/* 🖼️ 버튼 내부 이미지 크기 제어 */
-.ai-widget .ai-toggle-btn.img-button img {
-    width: 55% !important;        /* 이미지 자체 크기를 버튼의 55% 수준으로 대폭 축소 */
-    height: 55% !important;       /* 이미지 가로세로 비율 유지 */
-    object-fit: contain !important; /* 이미지가 잘리지 않고 온전히 파란 원 안에 쏙 들어가도록 조절 */
-    pointer-events: none !important;
+/* 챗봇 아이콘 3초 단위 교차 애니메이션 */
+@keyframes fadeRobot {
+    0%, 45% { opacity: 1; transform: scale(1); }
+    50%, 95% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
-.ai-chat-window {
-    display: none;
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    width: 350px;
-    height: 480px;
-    background: var(--bg-chat-window);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-    flex-direction: column;
-    overflow: hidden;
+@keyframes fadeAI {
+    0%, 45% { opacity: 0; transform: scale(0.5); }
+    50%, 95% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.5); }
 }
 
-.ai-chat-window.active { display: flex; }
-.ai-chat-header { background: #1865A4; color: white; padding: 14px; display: flex; justify-content: space-between; font-weight: bold; font-size: 14.5px; }
-.ai-chat-header button { background: none; border: none; color: white; cursor: pointer; font-size: 16px; }
+.icon-robot {
+    animation: fadeRobot 6s infinite ease-in-out;
+}
 
-.ai-chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: transparent; }
-.chat-bubble { max-width: 85%; padding: 10px 14px; border-radius: 14px; font-size: 13.5px; line-height: 1.4; word-break: break-all; }
-.chat-bubble.ai { background: var(--bg-chat-bubble-ai); color: var(--text-primary); align-self: flex-start; border-top-left-radius: 2px; }
-.chat-bubble.user { background: var(--bg-chat-bubble-user); color: var(--text-chat-user); align-self: flex-end; border-top-right-radius: 2px; }
-
-.ai-quick-replies { padding: 5px 10px; display: flex; gap: 6px; overflow-x: auto; white-space: nowrap; border-top: 1px solid var(--border-color); padding-top: 10px; }
-.ai-quick-replies button { background: var(--bg-chat-bubble-ai); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 11.5px; cursor: pointer; }
-
-.ai-chat-footer { padding: 10px; display: flex; gap: 8px; border-top: 1px solid var(--border-color); }
-.ai-chat-footer input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-container); color: var(--text-primary); font-size: 13px; }
-.ai-chat-footer button { background: #1865A4; color: white; border: none; padding: 0 16px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: bold; }
-
-@media (max-width: 480px) {
-    .ai-chat-window { width: calc(100vw - 40px); height: 420px; right: -10px; }
+.icon-text-ai {
+    opacity: 0;
+    animation: fadeAI 6s infinite ease-in-out;
 }

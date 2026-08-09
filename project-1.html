@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글로벌 웹 상점 구축 | 이다은 포트폴리오</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- 동일 경로 style.css 연결 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen antialiased">
+
+    <!-- Header / Navigation bar -->
+    <nav class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="index.html#projects" class="inline-flex items-center text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i> 목록으로 돌아가기
+            </a>
+            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">웹 상점</span>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+        
+        <!-- Hero Section -->
+        <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
+            
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-3">
+                    <div class="inline-block px-3 py-1 bg-blue-500/20 text-blue-300 border border-blue-400/30 text-xs font-semibold rounded-full mb-1">
+                        참여율 100% (기획 및 프로젝트 리딩)
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight">
+                        글로벌 웹 상점
+                    </h1>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl">
+                        인게임 재화 및 아이템의 웹 환경 <strong>결제 전환율 확대</strong>를 위한 <strong>16개 언어 대상</strong> 글로벌 이커머스 플랫폼 (인앱 결제 수수료 최소화를 통한 수익성 개선)
+                    </p>
+                    
+                    <div class="border-t border-slate-800 pt-4 mt-4 space-y-2 text-xs text-slate-400">
+                        <div>
+                            <span class="flex items-center"><i class="fa-regular fa-calendar text-blue-400 mr-1.5"></i> 2025.01 ~ 2026.01</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+                            <span class="flex items-center"><i class="fa-solid fa-link text-blue-400 mr-1.5"></i> <a href="https://summonerswar-shop.com2us.com/" target="_blank" class="hover:underline text-blue-300">서머너즈 워 웹 상점</a></span>
+                            <span class="flex items-center"><i class="fa-solid fa-link text-blue-400 mr-1.5"></i> <a href="https://cpbv-shop.com2us.com" target="_blank" class="hover:underline text-blue-300">컴투스프로야구V 웹 상점</a></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-1 overflow-hidden rounded-2xl shadow-lg border border-slate-800 bg-slate-800/50">
+                    <img 
+                        src="/images/webshop/webshop_thumnail.png" 
+                        alt="글로벌 웹 상점 썸네일" 
+                        class="w-full h-auto object-cover rounded-2xl hover:scale-105 transition-transform duration-300"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- 본문 내용 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200/80 space-y-10">
+             <!-- 1. Background -->
+            <div class="space-y-6">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center">
+                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3 font-black">1</span>
+                    진행 배경 및 문제 의식
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/60 space-y-3">
+                        <div class="font-bold text-slate-800 text-sm pb-2 border-b border-amber-200/60 text-amber-900 flex items-start gap-2 break-keep">
+                            <i class="fa-solid fa-circle-exclamation text-amber-600 mt-0.5 shrink-0"></i>
+                            <span>백오피스 시스템의 부재</span>
+                        </div>
+                        <ul class="text-xs text-slate-700 space-y-2 list-disc pl-4 leading-relaxed break-keep">
+                            <li>상점 런칭마다 반복되는 <strong class="text-slate-900">하드코딩 개발 (건당 4주 소요)</strong></li>
+                            <li>통합 관리 도구 부재로 운영 <strong class="text-slate-900">효율성 저하</strong></li>
+                            <li>신규 기능 업데이트 시 <strong class="text-slate-900">마이그레이션 부담</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/60 space-y-3">
+                        <div class="font-bold text-slate-800 text-sm pb-2 border-b border-amber-200/60 text-amber-900 flex items-start gap-2 break-keep">
+                            <i class="fa-solid fa-circle-exclamation text-amber-600 mt-0.5 shrink-0"></i>
+                            <span>결제 유도 시스템 부재</span>
+                        </div>
+                        <ul class="text-xs text-slate-700 space-y-2 list-disc pl-4 leading-relaxed break-keep">
+                            <li><strong class="text-slate-900">결제 유도 장치 부재</strong>로 인한 매출 기회 손실</li>
+                            <li>프로모션에 필요한 <strong class="text-slate-900">쿠폰, 포인트 기능 니즈 증가(운영)</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/60 space-y-3">
+                        <div class="font-bold text-slate-800 text-sm pb-2 border-b border-amber-200/60 text-amber-900 flex items-start gap-2 break-keep">
+                            <i class="fa-solid fa-circle-exclamation text-amber-600 mt-0.5 shrink-0"></i>
+                            <span>상품 정보 확인 및 결제 상세 정보 확인 구좌 부재</span>
+                        </div>
+                        <ul class="text-xs text-slate-700 space-y-2 list-disc pl-4 leading-relaxed break-keep">
+                            <li>구매 결정 과정 중 <strong class="text-slate-900">이탈 발생</strong></li>
+                            <li>수량 선택 기능 부재로 인한 <strong class="text-slate-900">결제 피로도 증가</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <div class="text-center mb-4">
+                        <i class="fa-solid fa-arrow-down text-slate-400 text-lg animate-bounce"></i>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex-1 text-center space-y-2 w-full break-keep">
+                            <div class="w-10 h-10 mx-auto rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-sitemap"></i>
+                            </div>
+                            <div class="font-bold text-slate-800 text-sm">웹 상점 통합<br>백오피스 구축</div>
+                        </div>
+
+                        <div class="text-slate-400 font-bold text-xl hidden md:block">+</div>
+
+                        <div class="flex-1 text-center space-y-2 w-full break-keep">
+                            <div class="w-10 h-10 mx-auto rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-ticket"></i>
+                            </div>
+                            <div class="font-bold text-slate-800 text-sm">쿠폰, 포인트 시스템<br>사내 최초 구축</div>
+                        </div>
+
+                        <div class="text-slate-400 font-bold text-xl hidden md:block">+</div>
+
+                        <div class="flex-1 text-center space-y-2 w-full break-keep">
+                            <div class="w-10 h-10 mx-auto rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                            <div class="font-bold text-slate-800 text-sm">상품 상세, 주문서<br>페이지 신설</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- 2. Process -->
+            <div class="space-y-4">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center">
+                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3 font-black">2</span>
+                    해결 과정
+                </h2>
+                <div class="space-y-4 text-sm">
+                    
+                    <!-- STEP 1 -->
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="font-bold text-blue-700 text-xs px-2.5 py-1 bg-blue-100 rounded-lg inline-block">STEP 1 - 기본 문서 정리</span>
+                        
+                        <ul class="space-y-2 text-xs text-slate-700 list-disc pl-4">
+                            <li class="space-y-1">
+                                <span>백오피스로 구현할 <strong class="font-bold text-slate-900">기능 정의</strong></span>
+                                <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                    <li>기존 웹 상점에서 백오피스 기능화가 필요한 영역 구분</li>
+                                    <li>PRD 및 기능명세서 작성</li>
+                                    <li>문서 구체화 과정 중 AI 활용</li>
+                                </ul>
+                            </li>
+                            <li class="space-y-1 pt-1">
+                                <span>E-Commerce 서비스 <strong class="font-bold text-slate-900">벤치마킹</strong></span>
+                                <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                    <li>상품 탐색 ~ 구매까지의 플로우 탐색</li>
+                                    <li>쿠폰, 포인트 사용 케이스 조사</li>
+                                    <li>글로벌 커머스 사례 조사</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="font-bold text-blue-700 text-xs px-2.5 py-1 bg-blue-100 rounded-lg inline-block">STEP 2 - 유관부서 논의</span>
+                        
+                        <ul class="space-y-2 text-xs text-slate-700 list-disc pl-4">
+                            <li>
+                                <span>기능명세서 공유 및 <strong class="font-bold text-slate-900">개발 방식 논의</strong></span>
+                            </li>
+                            <li class="space-y-1">
+                                <span>쿠폰/포인트 적용 시 <strong class="font-bold text-slate-900">글로벌 대응 정책 마련</strong></span>
+                                <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                    <li>통화별 예외 처리 케이스 확인</li>
+                                    <li>운영 정책 및 프로세스 논의</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                        <span class="font-bold text-blue-700 text-xs px-2.5 py-1 bg-blue-100 rounded-lg inline-block">STEP 3 - 기획서 작성</span>
+                        
+                        <!-- Front Office -->
+                        <div class="space-y-2 pt-1">
+                            <div class="font-bold text-blue-800 text-xs uppercase tracking-wider">Front Office</div>
+                            <ul class="space-y-2 text-xs text-slate-700 list-disc pl-4">
+                                <li class="space-y-1">
+                                    <span><strong class="font-bold text-slate-900">단계별 정보 위계 최적화</strong>를 통한 구매 프로세스 개선</span>
+                                    <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                        <li>상품 상세 페이지 신설</li>
+                                        <li>주문서 페이지 신설 및 쿠폰/포인트 기능 적용</li>
+                                    </ul>
+                                </li>
+                                <li class="space-y-1">
+                                    <span><strong class="font-bold text-slate-900">글로벌 정책 및 UI 적용</strong></span>
+                                    <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                        <li>쿠폰/포인트 기능 제공 시 통화별 예외 케이스 확인</li>
+                                        <li>국가별 법률 확인 및 유의사항 적용</li>
+                                        <li>16개 언어 번역 적용</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Back Office -->
+                        <div class="space-y-2 pt-2">
+                            <div class="font-bold text-blue-800 text-xs uppercase tracking-wider">Back Office</div>
+                            <ul class="space-y-2 text-xs text-slate-700 list-disc pl-4">
+                                <li class="space-y-1">
+                                    <span>운영 스타일 반영한 UI/UX 설계</span>
+                                    <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                        <li>상품 등록과 프로모션 기능 분리하여 <strong class="font-bold text-slate-900">모듈화된 프로세스 제공</strong></li>
+                                        <li>모든 웹 상점에 공통 반영 되는 <strong class="font-bold text-slate-900">컨트롤 타워 메뉴와 개별 웹 상점별 메뉴 분리</strong></li>
+                                    </ul>
+                                </li>
+                                <li class="space-y-1">
+                                    <span>웹 상점 <strong class="font-bold text-slate-900">커스터마이징 자율도 극대화↑</strong></span>
+                                    <ul class="pl-4 space-y-0.5 text-slate-600 list-disc">
+                                        <li>상품 및 프로모션 관리, 로고/배너 이미지 관리, 메타 태그, ... 등 운영에 필요한 모든 영역 컨트롤</li>
+                                        <li>국가별 제도 변경 시 빠른 대응을 위한 유의사항 안내문 설정</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 이미지 캐러셀 슬라이더 영역 -->
+                <div class="pt-4">
+                    <div class="relative overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-white group">
+                        <div id="process-carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="w-full shrink-0 relative cursor-pointer carousel-item" data-img="/images/webshop/FLOW.png">
+                                <img src="/images/webshop/FLOW.png" alt="프로세스 이미지 1" class="w-full h-64 sm:h-96 object-contain bg-white">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="bg-slate-900/80 text-white text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> 클릭하여 확대</span>
+                                </div>
+                            </div>
+                            <div class="w-full shrink-0 relative cursor-pointer carousel-item" data-img="/images/webshop/purchase process.png">
+                                <img src="/images/webshop/purchase process.png" alt="프로세스 이미지 2" class="w-full h-64 sm:h-96 object-contain bg-white">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="bg-slate-900/80 text-white text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> 클릭하여 확대</span>
+                                </div>
+                            </div>
+                            <div class="w-full shrink-0 relative cursor-pointer carousel-item" data-img="/images/webshop/Frame 26.png">
+                                <img src="/images/webshop/Frame 26.png" alt="프로세스 이미지 3" class="w-full h-64 sm:h-96 object-contain bg-white">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="bg-slate-900/80 text-white text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> 클릭하여 확대</span>
+                                </div>
+                            </div>
+                            <div class="w-full shrink-0 relative cursor-pointer carousel-item" data-img="/images/webshop/webshop_screenshot.png">
+                                <img src="/images/webshop/webshop_screenshot.png" alt="프로세스 이미지 4" class="w-full h-64 sm:h-96 object-contain bg-white">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="bg-slate-900/80 text-white text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> 클릭하여 확대</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="carousel-prev" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-800/70 hover:bg-slate-900 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md">
+                            <i class="fa-solid fa-chevron-left text-sm"></i>
+                        </button>
+                        <button id="carousel-next" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-800/70 hover:bg-slate-900 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-md">
+                            <i class="fa-solid fa-chevron-right text-sm"></i>
+                        </button>
+
+                        <div id="carousel-indicators" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- 3. Key Results -->
+            <div class="space-y-4">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center">
+                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3 font-black">3</span>
+                    개선 결과
+                </h2>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100/80">
+                        <div class="text-3xl font-extrabold text-blue-600">80%↓</div>
+                        <div class="text-xs font-semibold text-slate-700 mt-1">상점 세팅 공수</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">기존 4주 → 3일 이내</div>
+                    </div>
+                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100/80">
+                        <div class="text-3xl font-extrabold text-blue-600">5%↑</div>
+                        <div class="text-xs font-semibold text-slate-700 mt-1">전체 매출 대비 웹 매출</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">프로모션 효율 개선</div>
+                    </div>
+                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100/80">
+                        <div class="text-3xl font-extrabold text-blue-600">15%↑</div>
+                        <div class="text-xs font-semibold text-slate-700 mt-1">1인당 평균 결제액</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">수량 선택 기능 구축</div>
+                    </div>
+                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100/80">
+                        <div class="text-3xl font-extrabold text-blue-600">8%↓</div>
+                        <div class="text-xs font-semibold text-slate-700 mt-1">결제 진입 후 이탈률</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">구매 여정 최적화</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Retrospect -->
+            <div class="p-6 bg-slate-900 text-slate-200 rounded-2xl text-xs sm:text-sm space-y-3 break-keep">
+                <div class="font-bold text-amber-400 text-base flex items-center">
+                    <i class="fa-solid fa-lightbulb mr-2"></i> Retrospect & Insight
+                </div>
+                <ul class="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
+                    <li>
+                        <strong class="font-bold text-white">빅뱅 방식</strong>(한 번에 전체 오픈)의 리스크를 경험하며, 복잡도가 높은 백오피스일수록 <strong class="font-bold text-white">핵심 기능 우선 배포</strong> 및 <strong class="font-bold text-white">반복적 개선</strong>이 안정성과 QA 품질 측면에서 유리함을 학습
+                    </li>
+                    <li>
+                        결제 플로우는 단순히 단계를 줄이는 것보다, <strong class="font-bold text-white">사용자에게 '확신'을 주는 정보</strong>(할인액, 상세 구성)를 <strong class="font-bold text-white">적재적소에 배치</strong>하는 것이 전환율에 더 직접적인 영향을 미침을 데이터로 확인함
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 하단 바로가기 버튼 -->
+        <div class="text-center pt-4">
+            <a href="project-2.html" class="inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-blue-600 rounded-2xl shadow-md transition-all">
+                커뮤니티 프로젝트 보러가기 <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- 팝업 모달 라이트박스 -->
+    <div id="image-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 sm:p-10 transition-all duration-300 opacity-0" style="z-index: 99999;">
+        <div class="relative max-w-6xl w-full h-full max-h-[85vh] flex items-center justify-center">
+            
+            <button id="close-modal" class="absolute top-2 right-2 text-white/80 hover:text-white bg-slate-800/80 hover:bg-black w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold z-50 transition-all shadow-md">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <button id="modal-prev" class="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800/80 hover:bg-black text-white flex items-center justify-center transition-all z-40 shadow-lg border border-white/10">
+                <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
+            </button>
+
+            <div class="w-full h-full flex items-center justify-center px-12 sm:px-16">
+                <img id="modal-img" src="" alt="확대 이미지" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-all duration-200">
+            </div>
+
+            <button id="modal-next" class="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800/80 hover:bg-black text-white flex items-center justify-center transition-all z-40 shadow-lg border border-white/10">
+                <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 동일 경로 script.js 연결 -->
+    <script src="script.js"></script>
+<!-- AI Floating Chatbot Widget -->
+    <div id="ai-chatbot-container" class="fixed bottom-6 right-6 z-[99999]">
+        <button id="chatbot-toggle-btn" class="w-14 h-14 bg-brand-blue text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 relative">
+            <!-- 기본 로봇 아이콘 -->
+            <i class="fa-solid fa-robot text-2xl absolute icon-robot"></i>
+            <!-- 전환될 AI 텍스트 -->
+            <span class="text-xl font-black absolute icon-text-ai">AI</span>
+        </button>
+
+        <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex-col transition-all">
+            <div class="bg-brand-blue text-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-robot text-brand-yellow text-lg"></i>
+                    <span class="font-bold text-sm">이다은 포트폴리오 AI 도우미</span>
+                </div>
+                <button id="chatbot-close-btn" class="text-white/80 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="chatbot-messages" class="p-4 h-80 overflow-y-auto space-y-3 text-xs bg-slate-50">
+                <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 max-w-[85%] shadow-sm leading-relaxed">
+                    안녕하세요! 이다은 기획자의 포트폴리오 AI 도우미입니다. 궁금한 점을 물어보세요! 😊
+                </div>
+            </div>
+
+            <form id="chatbot-form" class="p-3 bg-white border-t border-slate-200 flex gap-2">
+                <input type="text" id="chatbot-input" placeholder="메시지를 입력하세요..." class="flex-1 px-3 py-2 text-xs border border-slate-300 rounded-xl focus:outline-none focus:border-brand-blue" required>
+                <button type="submit" class="px-3 py-2 bg-brand-blue text-white text-xs rounded-xl font-bold hover:bg-blue-700 transition-colors">전송</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
